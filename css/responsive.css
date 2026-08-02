@@ -1,0 +1,133 @@
+@media (max-width: 1024px) {
+    .catalog-layout { flex-direction: column; }
+    .sidebar-filters { width: 100%; display: flex; gap: 20px; flex-wrap: wrap; }
+    .filter-group { flex: 1; min-width: 200px; }
+}
+
+@media (max-width: 768px) {
+    .grid-3, .grid-4 { grid-template-columns: repeat(2, 1fr); }
+    .header-content { flex-direction: column; gap: 20px; }
+    .hero-content h1 { font-size: 2.5rem; }
+}
+
+@media (max-width: 480px) {
+    .grid-3, .grid-4 { grid-template-columns: 1fr; }
+    .nav { flex-direction: column; text-align: center; gap: 15px; }
+}
+
+@media (max-width: 768px) {
+    /* الأكواد السابقة الخاصة بك هنا... */
+    
+    /* --- تخصيص شريط البحث للموبايل --- */
+    .search-container {
+        width: auto;
+        border-color: transparent;
+        background-color: transparent;
+        justify-content: flex-end;
+    }
+    
+    /* عند تفعيل البحث بالضغط */
+    .search-container.active {
+        width: 100%;
+        border-color: var(--border-color);
+        background-color: var(--light-gray);
+    }
+
+    .search-bar {
+        width: 0;
+        padding: 0;
+        opacity: 0;
+        visibility: hidden;
+        transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+
+    /* إظهار الحقل بنعومة عند التفعيل */
+    .search-container.active .search-bar {
+        width: 100%;
+        padding: 5px 15px;
+        opacity: 1;
+        visibility: visible;
+    }
+}
+
+@media (max-width: 768px) {
+    /* ترتيب الـ Header للموبايل: الزر - اللوجو - البحث */
+    .header-content {
+        flex-direction: row;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: space-between;
+        position: relative; /* مهم لضبط القائمة المنسدلة */
+    }
+
+    /* إظهار زر الموبايل */
+    .mobile-menu-btn {
+        display: block;
+        order: 1;
+    }
+
+    /* توسيط اللوجو */
+    .logo {
+        order: 2;
+        margin: 0 auto;
+    }
+
+    /* شريط البحث */
+    .header-actions {
+        order: 3;
+    }
+
+    /* تنسيق القائمة لتصبح مخفية كمنسدلة */
+    .nav {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        background-color: var(--white);
+        position: absolute;
+        top: 100%;
+        left: 0;
+        padding: 0;
+        border-bottom: 1px solid var(--border-color);
+        box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+        order: 4;
+        z-index: 99;
+        
+        /* تأثير النعومة عند الفتح والإغلاق */
+        max-height: 0;
+        overflow: hidden;
+        opacity: 0;
+        transition: all 0.4s ease-in-out;
+    }
+
+    /* الكلاس الذي سيتم إضافته بالجافاسكريبت لفتح القائمة */
+    .nav.active {
+        max-height: 600px; /* تم زيادة الرقم ليستوعب أي عدد من الروابط */
+        opacity: 1;
+        padding: 10px 0;
+        overflow-y: auto; /* إضافة تمرير داخلي تحسباً للشاشات الصغيرة جداً */
+    }
+
+    .nav a {
+        padding: 15px 20px;
+        text-align: center;
+        border-bottom: 1px solid var(--light-gray);
+    }
+    
+    .nav a:last-child {
+        border-bottom: none;
+    }
+}
+
+/* --- إضافة مسافات جانبية في شاشات الموبايل لمنع التصاق المحتوى --- */
+@media (max-width: 768px) {
+    .container {
+        padding-left: 20px !important;
+        padding-right: 20px !important;
+        box-sizing: border-box;
+    }
+    
+    /* تعديل بسيط لشبكة المنتجات في الموبايل لتبدو المسافات متناسقة */
+    .grid {
+        gap: 15px !important; /* تقليل المسافة بين الكروت قليلاً لتناسب الشاشات الصغيرة */
+    }
+}

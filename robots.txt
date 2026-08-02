@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://nsemble.com/sitemap.xml
